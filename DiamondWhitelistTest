@@ -6,6 +6,4 @@ local Server = syn.request({
    Method = "Get" 
 }).Body
 
-if Server == "WHITELIST !" then
-    print("test")
-end
+print(Server)
