@@ -1,10 +1,9 @@
 _G.Key = ""
 _G.Hwid = game:GetService("RbxAnalyticsService"):GetClientId()
+local Check = "https://x2goldd.000webhostapp.com/Server.php?Key=".._G.Key"&HWID=".._G.Hwid
 
-local Server = syn.request({
-   Url = "http://127.0.0.1/Whitelist/Server.php?Key=".._G.Key.."&HWID=".._G.Hwid,
-   Method = "Get" 
-}).Body
-
-print(Server)
------what
+if Check == "WHITELIST !" then
+   print("Whitelist !!")
+elseif Check ~= "WHITELIST !" then
+   game.Players.localPlayer:Kick("Wrong Hwid or Key !!")
+end
