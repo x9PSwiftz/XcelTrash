@@ -1532,6 +1532,12 @@ return create
 ]])();
 local TPSer = game:GetService("TeleportService")
 local Tween = game:GetService("TweenService")
+--------------------------------------_G----------------------------------
+_G.Noclip = false
+_G.TeleportEnable = false
+_G.FastAttack = false
+_G.Bypassed = nil
+--------------------------------------------------------------------------
 
 local Win = DiamondLib:Win()
 local Tab1 = Win:addtap("Main")
@@ -1594,29 +1600,51 @@ elseif placeId == 7449423635 then
 	world3 = true
 end
 local Players = game:GetService("Players")
-function TP(P1)
+
+spawn(function()
+    game:GetService("RunService").Heartbeat:Connect(function()
+        pcall(function ()
+            if _G.Noclip then
+                game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(11,false)
+            end
+
+            if _G.Noclip then
+                game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(11,true)
+            end
+        end)
+    end)
+end)
+
+Teleport = {}
+function Teleport:TP(P1)
 	Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
 	if Distance < 1000 then
 		Speed = 400
 	elseif Distance >= 1000 then
 		Speed = 250
 	end
-    game:GetService("TweenService"):Create(
-        game.Players.LocalPlayer.Character.HumanoidRootPart,
-        TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
-        {CFrame = P1}
-    ):Play()
-    Clip = true
+    twer = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
+        {CFrame = P1}):Play()
+    _G.Noclip = true
     wait(Distance/Speed)
-    Clip = false
+
+    if _G.TeleportEnable then
+        
+    end 
+
+    if _G.TeleportEnable then
+        while task.wait() do
+            twer:Stop()
+        end
+    end
 end
+
 
 function BypassTP(C1)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = C1
 end
 
 getgenv().autobypass = nil
-_G.Bypassed = nil
 function iv()
 	pcall(function ()
 		Enemies = workspace.Enemies
@@ -1678,155 +1706,155 @@ end
 ----------------------------- Normal TP --------------------------------------------------
 if world1 then
     Page3:Button("Start Island",function()
-        TP(CFrame.new(1071.2832, 16.3085976, 1426.86792))
+        Teleport:TP(CFrame.new(1071.2832, 16.3085976, 1426.86792))
     end)
     Page3:Button("Marine Start",function()
-        TP(CFrame.new(-2573.3374, 6.88881969, 2046.99817))
+        Teleport:TP(CFrame.new(-2573.3374, 6.88881969, 2046.99817))
     end)
     Page3:Button("Middle Town",function()
-        TP(CFrame.new(-655.824158, 7.88708115, 1436.67908))
+        Teleport:TP(CFrame.new(-655.824158, 7.88708115, 1436.67908))
     end)
     Page3:Button("Jungle",function()
-        TP(CFrame.new(-1249.77222, 11.8870859, 341.356476))
+        Teleport:TP(CFrame.new(-1249.77222, 11.8870859, 341.356476))
     end)
     Page3:Button("Pirate Village",function()
-        TP(CFrame.new(-1122.34998, 4.78708982, 3855.91992))
+        Teleport:TP(CFrame.new(-1122.34998, 4.78708982, 3855.91992))
     end)
     Page3:Button("Desert",function()
-        TP(CFrame.new(1094.14587, 6.47350502, 4192.88721))
+        Teleport:TP(CFrame.new(1094.14587, 6.47350502, 4192.88721))
     end)
     Page3:Button("Frozen Village",function()
-        TP(CFrame.new(1198.00928, 27.0074959, -1211.73376))
+        Teleport:TP(CFrame.new(1198.00928, 27.0074959, -1211.73376))
     end)
     Page3:Button("MarineFord",function()
-        TP(CFrame.new(-4505.375, 20.687294, 4260.55908))
+        Teleport:TP(CFrame.new(-4505.375, 20.687294, 4260.55908))
     end)
     Page3:Button("Colosseum",function()
-        TP(CFrame.new(-1428.35474, 7.38933945, -3014.37305))
+        Teleport:TP(CFrame.new(-1428.35474, 7.38933945, -3014.37305))
     end)
     Page3:Button("Sky island 1 ",function()
-        TP(CFrame.new(-4970.21875, 717.707275, -2622.35449))
+        Teleport:TP(CFrame.new(-4970.21875, 717.707275, -2622.35449))
     end)
     Page3:Button("Sky island 2 ",function()
-        TP(CFrame.new(-4813.0249, 903.708557, -1912.69055))
+        Teleport:TP(CFrame.new(-4813.0249, 903.708557, -1912.69055))
     end)
     Page3:Button("Sky island 3 ",function()
-        TP(CFrame.new(-7952.31006, 5545.52832, -320.704956))
+        Teleport:TP(CFrame.new(-7952.31006, 5545.52832, -320.704956))
     end)
     Page3:Button("Sky island 4 ",function()
-        TP(CFrame.new(-7793.43896, 5607.22168, -2016.58362))
+        Teleport:TP(CFrame.new(-7793.43896, 5607.22168, -2016.58362))
     end)
     Page3:Button("Prison",function()
-        TP(CFrame.new(4854.16455, 5.68742752, 740.194641))
+        Teleport:TP(CFrame.new(4854.16455, 5.68742752, 740.194641))
     end)
     Page3:Button("Magma Village",function()
-        TP(CFrame.new(-5231.75879, 8.61593437, 8467.87695))
+        Teleport:TP(CFrame.new(-5231.75879, 8.61593437, 8467.87695))
     end)
     Page3:Button("UndeyWater City",function()
-        TP(CFrame.new(61163.8516, 11.7796879, 1819.78418))
+        Teleport:TP(CFrame.new(61163.8516, 11.7796879, 1819.78418))
     end)
     Page3:Button("Fountain City",function()
-        TP(CFrame.new(5132.7124, 4.53632832, 4037.8562))
+        Teleport:TP(CFrame.new(5132.7124, 4.53632832, 4037.8562))
     end)
     Page3:Button("House Cyborg's",function()
-        TP(CFrame.new(6262.72559, 71.3003616, 3998.23047))
+        Teleport:TP(CFrame.new(6262.72559, 71.3003616, 3998.23047))
     end)
     Page3:Button("Shank's Room",function()
-        TP(CFrame.new(-1442.16553, 29.8788261, -28.3547478))
+        Teleport:TP(CFrame.new(-1442.16553, 29.8788261, -28.3547478))
     end)
     Page3:Button("Mob Island",function()
-        TP(CFrame.new(-2850.20068, 7.39224768, 5354.99268))
+        Teleport:TP(CFrame.new(-2850.20068, 7.39224768, 5354.99268))
     end)
 end
 if world2 then
     Page3:Button("Dock",function()
-        TP(CFrame.new(82.9490662, 18.0710983, 2834.98779))
+        Teleport:TP(CFrame.new(82.9490662, 18.0710983, 2834.98779))
     end)
     Page3:Button("Kingdom of Rose",function()
-        TP(CFrame.new(-394.983521, 118.503128, 1245.8446))
+        Teleport:TP(CFrame.new(-394.983521, 118.503128, 1245.8446))
     end)
     Page3:Button("Mansion",function()
-        TP(CFrame.new(-390.096313, 331.886475, 673.464966))
+        Teleport:TP(CFrame.new(-390.096313, 331.886475, 673.464966))
     end)
     Page3:Button("Flamingo Room",function()
-        TP(CFrame.new(2302.19019, 15.1778421, 663.811035))
+        Teleport:TP(CFrame.new(2302.19019, 15.1778421, 663.811035))
     end)
     Page3:Button("Green Zone",function()
-        TP(CFrame.new(-2372.14697, 72.9919434, -3166.51416))
+        Teleport:TP(CFrame.new(-2372.14697, 72.9919434, -3166.51416))
     end)
     Page3:Button("Cafe",function()
-        TP(CFrame.new(-385.250916, 73.0458984, 297.388397))
+        Teleport:TP(CFrame.new(-385.250916, 73.0458984, 297.388397))
     end)
     Page3:Button("Factroy",function()
-        TP(CFrame.new(430.42569, 210.019623, -432.504791))
+        Teleport:TP(CFrame.new(430.42569, 210.019623, -432.504791))
     end)
     Page3:Button("Colosseum",function()
-        TP(CFrame.new(-1836.58191, 44.5890656, 1360.30652))
+        Teleport:TP(CFrame.new(-1836.58191, 44.5890656, 1360.30652))
     end)
     Page3:Button("Grave Island",function()
-        TP(CFrame.new(-5411.47607, 48.8234024, -721.272522))
+        Teleport:TP(CFrame.new(-5411.47607, 48.8234024, -721.272522))
     end)
     Page3:Button("Snow Mountain",function()
-        TP(CFrame.new(511.825226, 401.765198, -5380.396))
+        Teleport:TP(CFrame.new(511.825226, 401.765198, -5380.396))
     end)
     Page3:Button("Cold Island",function()
-        TP(CFrame.new(-6026.96484, 14.7461271, -5071.96338))
+        Teleport:TP(CFrame.new(-6026.96484, 14.7461271, -5071.96338))
     end)
     Page3:Button("Hot Island",function()
-        TP(CFrame.new(-5478.39209, 15.9775667, -5246.9126))
+        Teleport:TP(CFrame.new(-5478.39209, 15.9775667, -5246.9126))
     end)
     Page3:Button("Cursed Ship",function()
-        TP(CFrame.new(902.059143, 124.752518, 33071.8125))
+        Teleport:TP(CFrame.new(902.059143, 124.752518, 33071.8125))
     end)
     Page3:Button("Ice Castle",function()
-        TP(CFrame.new(5400.40381, 28.21698, -6236.99219))
+        Teleport:TP(CFrame.new(5400.40381, 28.21698, -6236.99219))
     end)
     Page3:Button("Forgotten Island",function()
-        TP(CFrame.new(-3043.31543, 238.881271, -10191.5791))
+        Teleport:TP(CFrame.new(-3043.31543, 238.881271, -10191.5791))
     end)
     Page3:Button("Usoapp Island",function()
-        TP(CFrame.new(4748.78857, 8.35370827, 2849.57959))
+        Teleport:TP(CFrame.new(4748.78857, 8.35370827, 2849.57959))
     end)
     Page3:Button("Minisky Island",function()
-        TP(CFrame.new(-260.358917, 49325.7031, -35259.3008))
+        Teleport:TP(CFrame.new(-260.358917, 49325.7031, -35259.3008))
     end)
 end
 if world3 then
     Page3:Button("Port Towen",function()
-    TP(CFrame.new(-610.309692, 57.8323097, 6436.33594))
+    Teleport:TP(CFrame.new(-610.309692, 57.8323097, 6436.33594))
 end)
 Page3:Button("Hydra Island",function()
-    TP(CFrame.new(5229.99561, 603.916565, 345.154022))
+    Teleport:TP(CFrame.new(5229.99561, 603.916565, 345.154022))
 end)
 Page3:Button("Great Tree",function()
-    TP(CFrame.new(2174.94873, 28.7312393, -6728.83154))
+    Teleport:TP(CFrame.new(2174.94873, 28.7312393, -6728.83154))
 end)
 Page3:Button("Castle on the Sea",function()
-    TP(CFrame.new(-5477.62842, 313.794739, -2808.4585))
+    Teleport:TP(CFrame.new(-5477.62842, 313.794739, -2808.4585))
 end)
 Page3:Button("Floating Turtle",function()
-    TP(CFrame.new(-10919.2998, 331.788452, -8637.57227))
+    Teleport:TP(CFrame.new(-10919.2998, 331.788452, -8637.57227))
 end)
 Page3:Button("Mansion",function()
-    TP(CFrame.new(-12553.8125, 332.403961, -7621.91748))
+    Teleport:TP(CFrame.new(-12553.8125, 332.403961, -7621.91748))
 end)
 Page3:Button("Secret Temple",function()
-    TP(CFrame.new(5217.35693, 6.56511116, 1100.88159))
+    Teleport:TP(CFrame.new(5217.35693, 6.56511116, 1100.88159))
 end)
 Page3:Button("Friendly Arena",function()
-    TP(CFrame.new(5220.28955, 72.8193436, -1450.86304))
+    Teleport:TP(CFrame.new(5220.28955, 72.8193436, -1450.86304))
 end)
 Page3:Button("Beautiful Pirate Domain",function()
-    TP(CFrame.new(5310.8095703125, 21.594484329224, 129.39053344727))
+    Teleport:TP(CFrame.new(5310.8095703125, 21.594484329224, 129.39053344727))
 end)
 Page3:Button("Teler Park",function()
-    TP(CFrame.new(-9512.3623046875, 142.13258361816, 5548.845703125))
+    Teleport:TP(CFrame.new(-9512.3623046875, 142.13258361816, 5548.845703125))
 end)
 Page3:Button("Ice Cream Island",function()
-    TP(CFrame.new(-900.67767333984, 58.971530914307, -10871.236328125))
+    Teleport:TP(CFrame.new(-900.67767333984, 58.971530914307, -10871.236328125))
 end)
 Page3:Button("Peanut Island",function()
-    TP(CFrame.new(-2045.2473144531, 4.701087474823, -9899.9716796875))
+    Teleport:TP(CFrame.new(-2045.2473144531, 4.701087474823, -9899.9716796875))
 end)
 
 end
@@ -1834,12 +1862,15 @@ end
 ---------------------------- Bypass TP ---------------------------------------------------
 Page4:Ti("ByPass Teleport")
 
+_G.TeleportStat = nil
 Page4:Button("ByPass Teleport", function()
     BypassEnabled()
+    _G.TeleportStat = true
 end)
 Page4:Button("stop", function()
     BypassDisibled()
 	_G.Bypassed = nil
+    _G.TeleportStat = false
 end)
 
 Page4:Ti("")
@@ -1999,12 +2030,115 @@ end)
 
 end
 
--------------------------------------------------AUTO BUSO HAKI-------------------------------------------------
-spawn(function()
-	_G.BusoCheck = nil
-	pcall(function()
-		if _G.BusoCheck then
-			
-		end
-	end)
+-------------------------------------------------Misc-------------------------------------------------
+local Page5 = Tab3:addpage()
+
+local IslandCFrame = {
+}
+local IslandName = {
+}
+
+if world1 then
+    table.insert(IslandCFrame,CFrame.new(0,0,0))
+elseif world2 then
+    table.insert(IslandCFrame,CFrame.new(0,0,0))
+elseif world3 then
+    table.insert(IslandCFrame,CFrame.new(-610.309692, 57.8323097, 6436.33594))
+    table.insert(IslandCFrame,CFrame.new(5229.99561, 603.916565, 345.154022))
+    table.insert(IslandCFrame,CFrame.new(2174.94873, 28.7312393, -6728.83154))
+    table.insert(IslandCFrame,CFrame.new(-5477.62842, 313.794739, -2808.4585))
+    table.insert(IslandCFrame,CFrame.new(-10919.2998, 331.788452, -8637.57227))
+    table.insert(IslandCFrame,CFrame.new(-12553.8125, 332.403961, -7621.91748))
+    table.insert(IslandCFrame,CFrame.new(5217.35693, 6.56511116, 1100.88159))
+    table.insert(IslandCFrame,CFrame.new(5220.28955, 72.8193436, -1450.86304))
+    table.insert(IslandCFrame,CFrame.new(5310.8095703125, 21.594484329224, 129.39053344727))
+    table.insert(IslandCFrame,CFrame.new(-9512.3623046875, 142.13258361816, 5548.845703125))
+    table.insert(IslandCFrame,CFrame.new(-900.67767333984, 58.971530914307, -10871.236328125))
+    table.insert(IslandCFrame,CFrame.new(-2045.2473144531, 4.701087474823, -9899.9716796875))
+end
+
+if world1 then
+    table.insert(IslandName,"Starter Island")
+elseif world2 then
+    table.insert(IslandName,"First Island")
+elseif world3 then
+    table.insert(IslandName,"Port Towen")
+    table.insert(IslandName,"Hydra Island")
+    table.insert(IslandName,"Great Tree")
+    table.insert(IslandName,"Castle on the Sea")
+    table.insert(IslandName,"Floating Turtle")
+    table.insert(IslandName,"Mansion")
+    table.insert(IslandName,"Secret Temple")
+    table.insert(IslandName,"Friendly Arena")
+    table.insert(IslandName,"Beautiful Pirate Domain")
+    table.insert(IslandName,"Teler Park")
+    table.insert(IslandName,"Ice Cream Island")
+    table.insert(IslandName,"Peanut Island")
+
+end
+
+local TeleportStat =  Page5:Label("Teleport Stat | Tween")
+    if _G.TeleportStat then
+    TeleportStat:Change("Teleport Stat |".." Bypass Teleport")
+    end
+    if  _G.TeleportStat then
+    TeleportStat:Change("Teleport Stat |".." Tween")
+    end
+
+
+Page5:DropDown("Teleport", "Selected", IslandName, function(v)
+  SelectedIsland = v
+  spawn(function()
+        pcall(function()
+        while task.wait() do
+            if _G.TeleportEnable then
+            if world1 then
+                
+            elseif world2 then
+            
+            elseif world3 then
+            if v == IslandName[1] then
+                Teleport:TP(IslandCFrame[1])
+            elseif v == IslandName[2] then
+                Teleport:TP(IslandCFrame[2])
+            elseif v == IslandName[3] then
+                Teleport:TP(IslandCFrame[3])
+            elseif v == IslandName[4] then
+                Teleport:TP(IslandCFrame[4])
+            elseif v == IslandName[5] then
+                Teleport:TP(IslandCFrame[5])
+            elseif v == IslandName[6] then
+                Teleport:TP(IslandCFrame[6])
+            elseif v == IslandName[7] then
+                Teleport:TP(IslandCFrame[7])
+            elseif v == IslandName[8] then
+                Teleport:TP(IslandCFrame[8])
+            elseif v == IslandName[9] then
+                Teleport:TP(IslandCFrame[9])
+            elseif v == IslandName[10] then
+                Teleport:TP(IslandCFrame[10])
+            elseif v == IslandName[11] then
+                Teleport:TP(IslandCFrame[11])
+            elseif v == IslandName[12] then
+                Teleport:TP(IslandCFrame[12])
+            end
+            
+            end
+           
+        end
+    
+            if _G.TeleportEnable then
+                
+            end
+        end    
+    end) 
 end)
+  if v == IslandName[1] then
+  end
+end)
+
+Page5:Toggle("Teleport", _G.TeleportEnable, function(x)
+    _G.TeleportEnable = x
+end)
+
+
