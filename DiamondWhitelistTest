@@ -8,3 +8,4 @@ if game:HttpGet(Check) == "WHITELIST !" then
 elseif game:HttpGet(Check) ~= "WHITELIST !" then
    game.Players.localPlayer:Kick("Wrong Hwid or Key !!")
 end
+-------------------
