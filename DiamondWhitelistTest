@@ -1,11 +1,9 @@
-_G.Key = ""
 _G.Hwid = game:GetService("RbxAnalyticsService"):GetClientId()
 local Check = "https://x2goldd.000webhostapp.com/Server.php?Key=".._G.Key.."&HWID=".._G.Hwid
 
-wait(2)
 if game:HttpGet(Check) == "WHITELIST !" then
    print("Whitelist !!")
    loadstring(game:HttpGet("https://raw.githubusercontent.com/KAOPASA/DiamondScript/main/"..game.PlaceId))();
 elseif game:HttpGet(Check) ~= "WHITELIST !" then
-   print("Invaid")
+   game.Players.localPlayer:Kick("Invaid Hwid or Key")
 end
