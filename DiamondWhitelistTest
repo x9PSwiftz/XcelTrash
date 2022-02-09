@@ -1,8 +1,6 @@
 _G.Key = ""
 _G.Hwid = game:GetService("RbxAnalyticsService"):GetClientId()
-while task.wait() do
 local Check = "https://x2goldd.000webhostapp.com/Server.php?Key=".._G.Key.."&HWID=".._G.Hwid
-end
 
 wait(2)
 if game:HttpGet(Check) == "WHITELIST !" then
