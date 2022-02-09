@@ -4,6 +4,7 @@ local Check = "https://x2goldd.000webhostapp.com/Server.php?Key=".._G.Key.."&HWI
 
 if game:HttpGet(Check) == "WHITELIST !" then
    print("Whitelist !!")
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/KAOPASA/DiamondScript/main/"..game.PlaceId))();
 elseif game:HttpGet(Check) ~= "WHITELIST !" then
    game.Players.localPlayer:Kick("Wrong Hwid or Key !!")
 end
