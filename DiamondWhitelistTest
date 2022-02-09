@@ -1,4 +1,4 @@
-_G.Key = ""
+_G.Key = nil
 _G.Hwid = game:GetService("RbxAnalyticsService"):GetClientId()
 wait(2)
 local Check = "https://x2goldd.000webhostapp.com/Server.php?Key=".._G.Key.."&HWID=".._G.Hwid
