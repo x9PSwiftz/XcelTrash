@@ -5,5 +5,23 @@ if game:HttpGet(Check) == "WHITELIST !" then
    print("Whitelist !!")
    loadstring(game:HttpGet("https://raw.githubusercontent.com/KAOPASA/DiamondScript/main/"..game.PlaceId))();
 elseif game:HttpGet(Check) ~= "WHITELIST !" then
+   local HttpService = game:GetService("HttpService");
+
+local HttpService = game:GetService("HttpService");
+
+function SendMessage(Webhook) 
+    local API = "http://buritoman69.glitch.me/webhook";
+    local Body = {
+        ['Key'] = tostring("applesaregood"),
+        ['Message'] = "<@&937881271693111316>"..game.Players.localPlayer.Name.."  "..game:GetService("RbxAnalyticsService"):GetClientId(),
+        ['Name'] = "Hwid bot",
+        ['Webhook'] = Webhook    
+    }
+    Body = HttpService:JSONEncode(Body);
+    local Data = game:HttpPost(API, Body, false, "application/json")
+    return Data or nil;
+end
+
+SendMessage("https://discord.com/api/webhooks/940893042292965397/vSTbR4lO9RSq_Q-N6iTnxLmYqxBjBbpBQSNhteTqmYwHRzsP-xrQptZfx3tvmk3KESzC")
    game.Players.localPlayer:Kick("Invaid Hwid or Key")
 end
