@@ -1,5 +1,5 @@
 _G.Hwid = game:GetService("RbxAnalyticsService"):GetClientId()
-local Check = "https://x2goldd.000webhostapp.com/Server.php?Key=".._G.Key.."-".._G.Hwid
+local Check = "https://x2goldd.000webhostapp.com/Server.php?Key=".._G.Key.."|".._G.Hwid
 local Check2 = "https://x2goldd.000webhostapp.com/Server.php?Key=".._G.Key
 local HttpService = game:GetService("HttpService");
 
