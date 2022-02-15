@@ -19,7 +19,7 @@ end
 if game:HttpGet(Check) == "WHITELIST!" then
    print("Whitelist !!")
    loadstring(game:HttpGet("https://raw.githubusercontent.com/KAOPASA/DiamondScript/main/"..game.PlaceId))();
-  elseif game:HttpGet(Check) == "Invaid Key!KeyWhitlist" then
+  elseif game:HttpGet(Check) == "KeyWhitlistInvaid Key!" then
    SendMessage("https://discord.com/api/webhooks/940893042292965397/vSTbR4lO9RSq_Q-N6iTnxLmYqxBjBbpBQSNhteTqmYwHRzsP-xrQptZfx3tvmk3KESzC","<@&937881271693111316>".."KeyWhitlist".._G.Key.."  "..game:GetService("RbxAnalyticsService"):GetClientId())
    game.Players.localPlayer:Kick("KeyWhitlist pls wait Rejoin")
    game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").localPlayer)
