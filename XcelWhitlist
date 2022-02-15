@@ -16,4 +16,4 @@ function SendMessage(Webhook,massage)
    return Data or nil;
 end
 
-print(Check)
+print(game:HttpGet(Check))
