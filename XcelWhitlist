@@ -3,17 +3,4 @@ local Check = "https://x2goldd.000webhostapp.com/Server.php?Key=".._G.Key.."|"..
 local Check2 = "https://x2goldd.000webhostapp.com/Server.php?Key=".._G.Key
 local HttpService = game:GetService("HttpService");
 
-function SendMessage(Webhook,massage) 
-   local API = "http://buritoman69.glitch.me/webhook";
-   local Body = {
-       ['Key'] = tostring("applesaregood"),
-       ['Message'] = massage,
-       ['Name'] = "Hwid bot",
-       ['Webhook'] = Webhook    
-   }
-   Body = HttpService:JSONEncode(Body);
-   local Data = game:HttpPost(API, Body, false, "application/json")
-   return Data or nil;
-end
-
 print(game:HttpGet(Check))
