@@ -1,0 +1,45 @@
+--get key number here : https://keycode.info/
+getgenv().Keydownxyz=32
+getgenv().zdb = false
+
+if game.CoreGui.RobloxGui:FindFirstChild("OpenClose") then
+    game.CoreGui.RobloxGui:FindFirstChild("OpenClose"):Destroy()
+end
+
+local OpenClose = Instance.new("TextButton")
+
+OpenClose.Name = "OpenClose"
+OpenClose.Parent = game:GetService("CoreGui").RobloxGui
+OpenClose.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+OpenClose.BorderColor3 = Color3.fromRGB(255, 255, 255)
+OpenClose.Position = UDim2.new(0.101562917, 0, 0.128654972, 0)
+OpenClose.Size = UDim2.new(0.0740559772, 0, 0.131578952, 0)
+OpenClose.Font = Enum.Font.GothamBold
+if zdb == false then
+    OpenClose.Text = "Close"
+elseif zdb == true then
+    OpenClose.Text = "Open"
+end
+OpenClose.TextColor3 = Color3.fromRGB(255, 255, 255)
+OpenClose.TextScaled = true
+OpenClose.TextSize = 14.000
+OpenClose.TextWrapped = true
+
+function keydown(use)
+    game:GetService("VirtualInputManager"):SendKeyEvent(true,use,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+    wait(.1)
+    game:GetService("VirtualInputManager"):SendKeyEvent(false,use,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+end
+
+OpenClose.MouseButton1Click:Connect(function()
+    keydown(Keydownxyz)
+    if zdb == false then
+        print("Closed")
+        OpenClose.Text = "Open"
+        zdb=true
+    else
+        OpenClose.Text = "Close"
+         print("Opened")
+        zdb=false
+    end
+end)
