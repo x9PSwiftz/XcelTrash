@@ -1,8 +1,12 @@
 
 --bonjour, ces enfants attardés . ... ..-- -...- --. -.- .-- -.-- .-..- .-. -.- ...- .- -... --- -..-- -.. -..-- .. ..- -. .-... -..-- .. ..- .--.. .-- --. --. ---. --- --. .-.-.
 --get key number here : https://keycode.info/
-getgenv().Keydownxyz=32
-getgenv().zdb = false
+if not getgenv().Keydownxyz then
+    getgenv().Keydownxyz=32
+end
+if not getgenv().zdb then
+    getgenv().zdb = false
+end
 
 if game.CoreGui.RobloxGui:FindFirstChild("OpenClose") then
     game.CoreGui.RobloxGui:FindFirstChild("OpenClose"):Destroy()
