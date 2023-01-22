@@ -1,4 +1,3 @@
-
 --bonjour, ces enfants attardés . ... ..-- -...- --. -.- .-- -.-- .-..- .-. -.- ...- .- -... --- -..-- -.. -..-- .. ..- -. .-... -..-- .. ..- .--.. .-- --. --. ---. --- --. .-.-.
 --get key number here : https://keycode.info/
 if not getgenv().Keydownxyz then
