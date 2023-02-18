@@ -1,0 +1,259 @@
+local NotificationDuration = 6.5
+local RayfieldLibrary = {
+  Flags = {},
+  Theme = {
+     Default = {
+        TextFont = "Default", -- Default will use the various font faces used across Rayfield
+        TextColor = Color3.fromRGB(240, 240, 240),
+        
+        Background = Color3.fromRGB(25, 25, 25),
+        Topbar = Color3.fromRGB(34, 34, 34),
+        Shadow = Color3.fromRGB(20, 20, 20),
+        
+        NotificationBackground = Color3.fromRGB(20, 20, 20),
+        NotificationActionsBackground = Color3.fromRGB(230, 230, 230),
+        
+        TabBackground = Color3.fromRGB(80, 80, 80),
+        TabStroke = Color3.fromRGB(85, 85, 85),
+        TabBackgroundSelected = Color3.fromRGB(210, 210, 210),
+        TabTextColor = Color3.fromRGB(240, 240, 240),
+        SelectedTabTextColor = Color3.fromRGB(50, 50, 50),
+        
+        ElementBackground = Color3.fromRGB(35, 35, 35),
+        ElementBackgroundHover = Color3.fromRGB(40, 40, 40),
+        SecondaryElementBackground = Color3.fromRGB(25, 25, 25), -- For labels and paragraphs
+        ElementStroke = Color3.fromRGB(50, 50, 50),
+        SecondaryElementStroke = Color3.fromRGB(40, 40, 40), -- For labels and paragraphs
+        
+        SliderBackground = Color3.fromRGB(43, 105, 159),
+        SliderProgress = Color3.fromRGB(43, 105, 159),
+        SliderStroke = Color3.fromRGB(48, 119, 177),
+        
+        ToggleBackground = Color3.fromRGB(30, 30, 30),
+        ToggleEnabled = Color3.fromRGB(0, 146, 214),
+        ToggleDisabled = Color3.fromRGB(100, 100, 100),
+        ToggleEnabledStroke = Color3.fromRGB(0, 170, 255),
+        ToggleDisabledStroke = Color3.fromRGB(125, 125, 125),
+        ToggleEnabledOuterStroke = Color3.fromRGB(100, 100, 100),
+        ToggleDisabledOuterStroke = Color3.fromRGB(65, 65, 65),
+        
+        InputBackground = Color3.fromRGB(30, 30, 30),
+        InputStroke = Color3.fromRGB(65, 65, 65),
+        PlaceholderColor = Color3.fromRGB(178, 178, 178)
+     },
+     Light = {
+        TextFont = "Gotham", -- Default will use the various font faces used across Rayfield
+        TextColor = Color3.fromRGB(50, 50, 50), -- i need to make all text 240, 240, 240 and base gray on transparency not color to do this
+        
+        Background = Color3.fromRGB(255, 255, 255),
+        Topbar = Color3.fromRGB(217, 217, 217),
+        Shadow = Color3.fromRGB(223, 223, 223),
+
+        NotificationBackground = Color3.fromRGB(20, 20, 20),
+        NotificationActionsBackground = Color3.fromRGB(230, 230, 230),
+
+        TabBackground = Color3.fromRGB(220, 220, 220),
+        TabStroke = Color3.fromRGB(112, 112, 112),
+        TabBackgroundSelected = Color3.fromRGB(0, 142, 208),
+        TabTextColor = Color3.fromRGB(240, 240, 240),
+        SelectedTabTextColor = Color3.fromRGB(50, 50, 50),
+     
+        ElementBackground = Color3.fromRGB(198, 198, 198),
+        ElementBackgroundHover = Color3.fromRGB(230, 230, 230),
+        SecondaryElementBackground = Color3.fromRGB(136, 136, 136), -- For labels and paragraphs
+        ElementStroke = Color3.fromRGB(180, 199, 97),
+        SecondaryElementStroke = Color3.fromRGB(40, 40, 40), -- For labels and paragraphs
+
+        SliderBackground = Color3.fromRGB(31, 159, 71),
+        SliderProgress = Color3.fromRGB(31, 159, 71),
+        SliderStroke = Color3.fromRGB(42, 216, 94),
+
+        ToggleBackground = Color3.fromRGB(170, 203, 60),
+        ToggleEnabled = Color3.fromRGB(32, 214, 29),
+        ToggleDisabled = Color3.fromRGB(100, 22, 23),
+        ToggleEnabledStroke = Color3.fromRGB(17, 255, 0),
+        ToggleDisabledStroke = Color3.fromRGB(65, 8, 8),
+        ToggleEnabledOuterStroke = Color3.fromRGB(0, 170, 0),
+        ToggleDisabledOuterStroke = Color3.fromRGB(170, 0, 0),
+
+        InputBackground = Color3.fromRGB(31, 159, 71),
+        InputStroke = Color3.fromRGB(19, 65, 31),
+        PlaceholderColor = Color3.fromRGB(178, 178, 178)
+     }
+  }
+}
+
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local CoreGui = game:GetService("CoreGui")
+
+-- Interface Management
+local Rayfield = game:GetObjects("rbxassetid://10804731440")[1]
+Rayfield.Name = "ezg"
+
+Rayfield.Parent = CoreGui
+
+
+if gethui then
+  for _, Interface in ipairs(gethui():GetChildren()) do
+     if Interface.Name == Rayfield.Name and Interface ~= Rayfield then
+        Interface:Destroy()
+     end
+  end
+else
+  for _, Interface in ipairs(CoreGui:GetChildren()) do
+     if Interface.Name == Rayfield.Name and Interface ~= Rayfield then
+        Interface:Destroy()
+     end
+  end
+end
+
+local Main = Rayfield.Main
+Main.Visible=false
+
+Rayfield.DisplayOrder = 100
+
+if setting._key then
+    if string.find(setting._key,"http") then
+		local Success, Response = pcall(function()
+			setting._key = game:HttpGet(setting._key)
+		end)
+		if not Success then
+			print("Getkey Medthod : Error " ..tostring(Response))
+		end
+	end
+end
+
+if not Passthrough then
+  local AttemptsRemaining = math.random(2,6)
+  Rayfield.Enabled = false
+  local KeyUI = game:GetObjects("rbxassetid://11380036235")[1]
+
+  if gethui then
+     KeyUI.Parent = gethui()
+  elseif syn.protect_gui then
+     syn.protect_gui(Rayfield)
+     KeyUI.Parent = CoreGui
+  else
+     KeyUI.Parent = CoreGui
+  end
+
+  if gethui then
+     for _, Interface in ipairs(gethui():GetChildren()) do
+        if Interface.Name == KeyUI.Name and Interface ~= KeyUI then
+           Interface.Enabled = false
+           Interface.Name = "KeyUI-Old"
+        end
+     end
+  else
+     for _, Interface in ipairs(CoreGui:GetChildren()) do
+        if Interface.Name == KeyUI.Name and Interface ~= KeyUI then
+           Interface.Enabled = false
+           Interface.Name = "KeyUI-Old"
+        end
+     end
+  end
+
+  local KeyMain = KeyUI.Main
+  KeyMain.Title.Text = setting.title or "ไออ้วน"
+  KeyMain.Subtitle.Text = setting._sub or "Key System"
+  KeyMain.NoteMessage.Text = setting._note or "No instructions"
+
+  KeyMain.Size = UDim2.new(0, 467, 0, 175)
+  KeyMain.BackgroundTransparency = 1
+  KeyMain.Shadow.Image.ImageTransparency = 1
+  KeyMain.Title.TextTransparency = 1
+  KeyMain.Subtitle.TextTransparency = 1
+  KeyMain.KeyNote.TextTransparency = 1
+  KeyMain.Input.BackgroundTransparency = 1
+  KeyMain.Input.UIStroke.Transparency = 1
+  KeyMain.Input.InputBox.TextTransparency = 1
+  KeyMain.NoteTitle.TextTransparency = 1
+  KeyMain.NoteMessage.TextTransparency = 1
+  KeyMain.Hide.ImageTransparency = 1
+
+  TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundTransparency = 0}):Play()
+  TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 500, 0, 187)}):Play()
+  TweenService:Create(KeyMain.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {ImageTransparency = 0.5}):Play()
+  wait(0.05)
+  TweenService:Create(KeyMain.Title, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {TextTransparency = 0}):Play()
+  TweenService:Create(KeyMain.Subtitle, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {TextTransparency = 0}):Play()
+  wait(0.05)
+  TweenService:Create(KeyMain.KeyNote, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {TextTransparency = 0}):Play()
+  TweenService:Create(KeyMain.Input, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {BackgroundTransparency = 0}):Play()
+  TweenService:Create(KeyMain.Input.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Transparency = 0}):Play()
+  TweenService:Create(KeyMain.Input.InputBox, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {TextTransparency = 0}):Play()
+  wait(0.05)
+  TweenService:Create(KeyMain.NoteTitle, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {TextTransparency = 0}):Play()
+  TweenService:Create(KeyMain.NoteMessage, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {TextTransparency = 0}):Play()
+  wait(0.15)
+  TweenService:Create(KeyMain.Hide, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {ImageTransparency = 0.3}):Play()
+
+
+  KeyUI.Main.Input.InputBox.FocusLost:Connect(function()
+     if KeyMain.Input.InputBox.Text == setting._key then
+        TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundTransparency = 1}):Play()
+        TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 467, 0, 175)}):Play()
+        TweenService:Create(KeyMain.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
+        TweenService:Create(KeyMain.Title, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+        TweenService:Create(KeyMain.Subtitle, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+        TweenService:Create(KeyMain.KeyNote, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+        TweenService:Create(KeyMain.Input, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {BackgroundTransparency = 1}):Play()
+        TweenService:Create(KeyMain.Input.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Transparency = 1}):Play()
+        TweenService:Create(KeyMain.Input.InputBox, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+        TweenService:Create(KeyMain.NoteTitle, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+        TweenService:Create(KeyMain.NoteMessage, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+        TweenService:Create(KeyMain.Hide, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
+        wait(0.51)
+        Passthrough = true
+     else
+        if AttemptsRemaining == 0 then
+           TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundTransparency = 1}):Play()
+           TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 467, 0, 175)}):Play()
+           TweenService:Create(KeyMain.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
+           TweenService:Create(KeyMain.Title, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+           TweenService:Create(KeyMain.Subtitle, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+           TweenService:Create(KeyMain.KeyNote, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+           TweenService:Create(KeyMain.Input, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {BackgroundTransparency = 1}):Play()
+           TweenService:Create(KeyMain.Input.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Transparency = 1}):Play()
+           TweenService:Create(KeyMain.Input.InputBox, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+           TweenService:Create(KeyMain.NoteTitle, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+           TweenService:Create(KeyMain.NoteMessage, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+           TweenService:Create(KeyMain.Hide, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
+           wait(0.45)
+           game.Players.LocalPlayer:Kick("No Attempts Remaining")
+           game:Shutdown()
+        end
+        KeyMain.Input.InputBox.Text = ""
+        AttemptsRemaining = AttemptsRemaining - 1
+        TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 467, 0, 175)}):Play()
+        TweenService:Create(KeyMain, TweenInfo.new(0.4, Enum.EasingStyle.Elastic), {Position = UDim2.new(0.495,0,0.5,0)}):Play()
+        wait(0.1)
+        TweenService:Create(KeyMain, TweenInfo.new(0.4, Enum.EasingStyle.Elastic), {Position = UDim2.new(0.505,0,0.5,0)}):Play()
+        wait(0.1)
+        TweenService:Create(KeyMain, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {Position = UDim2.new(0.5,0,0.5,0)}):Play()
+        TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 500, 0, 187)}):Play()
+     end
+  end)
+
+  KeyMain.Hide.MouseButton1Click:Connect(function()
+     TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundTransparency = 1}):Play()
+     TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 467, 0, 175)}):Play()
+     TweenService:Create(KeyMain.Shadow.Image, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
+     TweenService:Create(KeyMain.Title, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+     TweenService:Create(KeyMain.Subtitle, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+     TweenService:Create(KeyMain.KeyNote, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+     TweenService:Create(KeyMain.Input, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {BackgroundTransparency = 1}):Play()
+     TweenService:Create(KeyMain.Input.UIStroke, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Transparency = 1}):Play()
+     TweenService:Create(KeyMain.Input.InputBox, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+     TweenService:Create(KeyMain.NoteTitle, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+     TweenService:Create(KeyMain.NoteMessage, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
+     TweenService:Create(KeyMain.Hide, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
+     wait(0.51)
+     RayfieldLibrary:Destroy()
+     KeyUI:Destroy()
+  end)
+else
+  Passthrough = true
+end
+repeat wait() until Passthrough
