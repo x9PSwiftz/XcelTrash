@@ -6,8 +6,8 @@ by Sirius
 shlex | Designing + Programming
 iRay  | Programming
 
-add fucking useful function by 9PASA
-
+- add fucking useful function by 9PASA
+	\ Diamond Hub
 ]]
 
 
@@ -1849,9 +1849,9 @@ function RayfieldLibrary:CreateWindow(Settings)
 			end
 
             function DropdownSettings:SetOptions(NewTable)
-                for i,v in pairs(Dropdown.List) do
+                for i,v in pairs(Dropdown.List:GetChildren()) do
                     if not v:IsA("UIListLayout") then
-                        Dropdown.List:Destroy()
+                        v:Destroy()
                     end
                 end
                 for _, Option in ipairs(NewTable) do
