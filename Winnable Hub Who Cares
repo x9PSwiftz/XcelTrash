@@ -1,5 +1,7 @@
-do  local ui =  game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("UiFuji")  if ui then ui:Destroy() end end
-loadstring(game:HttpGet("https://raw.githubusercontent.com/x9PSwiftz/XcelTrash/main/OpenClouseUI"))()
+if game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("Winnable") then
+	game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("Winnable"):Destroy()
+end
+spawn(loadstring(game:HttpGet("https://raw.githubusercontent.com/x9PSwiftz/XcelTrash/main/OpenClouseUI")))
 
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -7,10 +9,10 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 
-local UiFuji = Instance.new("ScreenGui")
-UiFuji.Name = "UiFuji"
-UiFuji.Parent = game:GetService("CoreGui").RobloxGui.Modules
-UiFuji.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+local Winnable = Instance.new("ScreenGui")
+Winnable.Name = "Winnable"
+Winnable.Parent = game:GetService("CoreGui").RobloxGui.Modules
+Winnable.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 local function MakeDraggable(topbarobject, object)
 	local Dragging = nil
@@ -74,7 +76,7 @@ function Create:window()
 	local FocusUI = false ; -- tap
 	local Main = Instance.new("Frame")
 	Main.Name = "Main"
-	Main.Parent = UiFuji
+	Main.Parent = Winnable
 	Main.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 	Main.Position = UDim2.new(0.330043167, 0, 0.254589975, 0)
 	Main.Size = UDim2.new(0, 550, 0, 400)
