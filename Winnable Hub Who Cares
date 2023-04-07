@@ -1,6 +1,8 @@
-if game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("Winnable") then
-	game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("Winnable"):Destroy()
-end
+pcall(function()
+	if game:GetService("CoreGui"):FindFirstChild("Winnable") then
+		game:GetService("CoreGui"):FindFirstChild("Winnable"):Destroy()
+	end
+end)
 spawn(loadstring(game:HttpGet("https://raw.githubusercontent.com/x9PSwiftz/XcelTrash/main/OpenClouseUI")))
 
 local UserInputService = game:GetService("UserInputService")
@@ -11,7 +13,7 @@ local Mouse = LocalPlayer:GetMouse()
 
 local Winnable = Instance.new("ScreenGui")
 Winnable.Name = "Winnable"
-Winnable.Parent = game:GetService("CoreGui").RobloxGui.Modules
+Winnable.Parent = game:GetService("CoreGui")
 Winnable.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 local function MakeDraggable(topbarobject, object)
