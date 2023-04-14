@@ -1,19 +1,8 @@
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 
-function RobloxNotify(Ti,tab,icon,sec)
-    game.StarterGui:SetCore("SendNotification", {
-    Title = Ti,
-    Text = tab,
-    Icon = icon,
-    Duration = sec,
-    })
-end	
-
-
 bigc = 'Diamond Hub'
 if game.CoreGui:FindFirstChild(bigc) then
-    RobloxNotify("Diamond Hub","Stop Double Execute",'http://www.roblox.com/asset/?id=8497049935',2)
     game.CoreGui:FindFirstChild(bigc):Destroy()
 end
 
