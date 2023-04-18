@@ -2255,7 +2255,7 @@ function EngUi:Window(text,maincolor)
             Toggle.MouseButton1Click:Connect(function()
                if toggled == false then
                   TweenService:Create(Icon,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageColor3 = Color3.fromRGB(255,255,255)}):Play()
-                  TweenService:Create(ToggleFrame,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(255, 102, 102)}):Play()
+                  TweenService:Create(ToggleFrame,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = maincolor or Color3.fromRGB(255,255,255)}):Play()
                   ToggleFrameCircle:TweenPosition(UDim2.new(0.655, -5, 0.133000001, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
                   TweenService:Create(Icon,TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency = 1}):Play()
                   Icon.Image = "http://www.roblox.com/asset/?id=6023426926"
@@ -2276,7 +2276,7 @@ function EngUi:Window(text,maincolor)
             if default == true then
                toggled = false
                TweenService:Create(Icon,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageColor3 = Color3.fromRGB(255,255,255)}):Play()
-               TweenService:Create(ToggleFrame,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(255, 102, 102)}):Play()
+               TweenService:Create(ToggleFrame,TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundColor3 = maincolor or Color3.fromRGB(255,255,255)}):Play()
                ToggleFrameCircle:TweenPosition(UDim2.new(0.655, -5, 0.133000001, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
                TweenService:Create(Icon,TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageTransparency = 1}):Play()
                Icon.Image = "http://www.roblox.com/asset/?id=6023426926"
@@ -2344,7 +2344,7 @@ function EngUi:Window(text,maincolor)
 
             CurrentValueFrame.Name = "CurrentValueFrame"
             CurrentValueFrame.Parent = SliderFrame
-            CurrentValueFrame.BackgroundColor3 = Color3.fromRGB(255, 102, 102)
+            CurrentValueFrame.BackgroundColor3 = maincolor or Color3.fromRGB(255,255,255)
             CurrentValueFrame.Size = UDim2.new((start or 0) / max, 0, 0, 8)
 
             CurrentValueFrameCorner.Name = "CurrentValueFrameCorner"
