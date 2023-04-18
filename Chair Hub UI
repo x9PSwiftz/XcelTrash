@@ -260,7 +260,7 @@ function EngUi:Window(text,maincolor)
    UserTag.Position = UDim2.new(0.230000004, 0, 0.275000013, 0)
    UserTag.Size = UDim2.new(0, 95, 0, 17)
    UserTag.Font = Enum.Font.GothamBold
-   UserTag.TextColor3 = Color3.fromRGB(102, 230, 255)
+   UserTag.TextColor3 = maincolor or Color3.fromRGB(255,255,255)
    UserTag.TextSize = 13.000
    UserTag.TextTransparency = 0
    UserTag.TextXAlignment = Enum.TextXAlignment.Left
@@ -1654,7 +1654,7 @@ function EngUi:Window(text,maincolor)
          TweenService:Create(
             AlrightBtn,
             TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-            {BackgroundColor3 = Color3.fromRGB(102, 230, 255)}
+            {BackgroundColor3 = maincolor or Color3.fromRGB(255,255,255)}
          ):Play()
       end)
 
@@ -1689,7 +1689,7 @@ function EngUi:Window(text,maincolor)
       Server.Text = ""
       Server.BackgroundTransparency = 1
       Server.TextTransparency = 1
-      Server.TextColor3 = Color3.fromRGB(102, 230, 255)
+      Server.TextColor3 = maincolor or Color3.fromRGB(255,255,255)
       Server.TextSize = 18.000
 
       ServerBtnCorner.CornerRadius = UDim.new(1, 0)
@@ -1770,7 +1770,7 @@ function EngUi:Window(text,maincolor)
       ServerTitle.Size = UDim2.new(0, 97, 0, 39)
       ServerTitle.Font = Enum.Font.GothamSemibold
       ServerTitle.Text = text
-      ServerTitle.TextColor3 = Color3.fromRGB(102, 230, 255)
+      ServerTitle.TextColor3 = maincolor or Color3.fromRGB(255,255,255)
       ServerTitle.TextSize = 15.000
       ServerTitle.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -2322,7 +2322,7 @@ function EngUi:Window(text,maincolor)
 
             SliderTitle.Name = "SliderTitle"
             SliderTitle.Parent = Slider
-            SliderTitle.BackgroundColor3 = Color3.fromRGB(102, 230, 255)
+            SliderTitle.BackgroundColor3 = maincolor or Color3.fromRGB(255,255,255)
             SliderTitle.BackgroundTransparency = 1.000
             SliderTitle.Position = UDim2.new(0, 5, 0, -4)
             SliderTitle.Size = UDim2.new(0, 200, 0, 27)
@@ -2632,7 +2632,7 @@ function EngUi:Window(text,maincolor)
             DropItemHolder.CanvasSize = UDim2.new(0, 0, 0, 0)
             DropItemHolder.ScrollBarThickness = 4
             DropItemHolder.BorderSizePixel = 0
-            DropItemHolder.ScrollBarImageColor3 = Color3.fromRGB(102, 230, 255)
+            DropItemHolder.ScrollBarImageColor3 = maincolor or Color3.fromRGB(255,255,255) or Color3.fromRGB(255,255,255)
 
             DropItemHolderLayout.Name = "ItemHolderLayout"
             DropItemHolderLayout.Parent = DropItemHolder
@@ -2924,7 +2924,7 @@ function EngUi:Window(text,maincolor)
                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)),
                ColorSequenceKeypoint.new(0.20, Color3.fromRGB(234, 255, 0)),
                ColorSequenceKeypoint.new(0.40, Color3.fromRGB(21, 255, 0)),
-               ColorSequenceKeypoint.new(0.60, Color3.fromRGB(102, 230, 255)),
+               ColorSequenceKeypoint.new(0.60, Color3.fromRGB(255, 178, 102)),
                ColorSequenceKeypoint.new(0.80, Color3.fromRGB(0, 17, 255)),
                ColorSequenceKeypoint.new(0.90, Color3.fromRGB(255, 0, 251)),
                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 0, 4))
@@ -3251,4 +3251,4 @@ function EngUi:Window(text,maincolor)
    end
    return ServerHold
 end
-return EngU
+return EngUi
