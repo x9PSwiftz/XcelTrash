@@ -1,0 +1,114 @@
+if game.CoreGui:FindFirstChild("Byefron") then
+	game.CoreGui:FindFirstChild("Byefron"):Destroy()
+end
+
+local Byefron = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Byefron_2 = Instance.new("ImageLabel")
+local Roblox = Instance.new("ImageLabel")
+local Tag = Instance.new("TextLabel")
+local loadtext = Instance.new("TextLabel")
+local load1 = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local load2 = Instance.new("Frame")
+local UICorner_3 = Instance.new("UICorner")
+
+--Properties:
+
+Byefron.Name = "Byefron"
+Byefron.Parent = game.CoreGui
+Byefron.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = Byefron
+Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Frame.Position = UDim2.new(0.5, 0, 0.49999997, 0)
+Frame.Size = UDim2.new(0, 498, 0, 302)
+
+UICorner.Parent = Frame
+
+Byefron_2.Name = "Byefron"
+Byefron_2.Parent = Frame
+Byefron_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Byefron_2.BackgroundTransparency = 1.000
+Byefron_2.Position = UDim2.new(0.0180722885, 0, 0.0198675506, 0)
+Byefron_2.Size = UDim2.new(0, 100, 0, 100)
+Byefron_2.Image = "rbxassetid://13476628914"
+
+Roblox.Name = "Roblox"
+Roblox.Parent = Frame
+Roblox.AnchorPoint = Vector2.new(0.5, 0.5)
+Roblox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Roblox.BackgroundTransparency = 1.000
+Roblox.Position = UDim2.new(0.5, 0, 0.5, 0)
+Roblox.Size = UDim2.new(0, 228, 0, 51)
+Roblox.Image = "rbxassetid://13476640748"
+
+Tag.Name = "Tag"
+Tag.Parent = Frame
+Tag.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Tag.BackgroundTransparency = 1.000
+Tag.Position = UDim2.new(0.281124502, 0, 0.0198675506, 0)
+Tag.Size = UDim2.new(0, 350, 0, 16)
+Tag.Font = Enum.Font.GothamBold
+Tag.Text = "Minecraft | lastest version (???)"
+Tag.TextColor3 = Color3.fromRGB(255, 255, 255)
+Tag.TextScaled = true
+Tag.TextSize = 14.000
+Tag.TextWrapped = true
+Tag.TextXAlignment = Enum.TextXAlignment.Right
+spawn(function()
+	Tag.Text = "Minecraft | lastest version ("..tostring(game:GetService("HttpService"):JSONDecode(game:HttpGet("https://launchermeta.mojang.com/mc/game/version_manifest.json")).latest.release)..")"
+end)
+
+loadtext.Name = "loadtext"
+loadtext.Parent = Frame
+loadtext.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+loadtext.BackgroundTransparency = 1.000
+loadtext.Position = UDim2.new(0.337349385, 0, 0.817880809, 0)
+loadtext.Size = UDim2.new(0, 162, 0, 18)
+loadtext.Font = Enum.Font.GothamBold
+loadtext.Text = "Loading Script..."
+loadtext.TextColor3 = Color3.fromRGB(255, 255, 255)
+loadtext.TextScaled = true
+loadtext.TextSize = 14.000
+loadtext.TextWrapped = true
+
+load1.Name = "load1"
+load1.Parent = Frame
+load1.BackgroundColor3 = Color3.fromRGB(102, 102, 102)
+load1.Position = UDim2.new(0.0662650615, 0, 0.91390717, 0)
+load1.Size = UDim2.new(0, 431, 0, 11)
+
+UICorner_2.Parent = load1
+
+load2.Name = "load2"
+load2.Parent = load1
+load2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+load2.Size = UDim2.new(0, 0, 0, 11)
+UICorner_3.Parent = load2
+
+local l1 = game:GetService("TweenService"):Create(load2, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0.3, 0, 0, 11)})
+l1:Play()
+l1.Completed:Wait()
+local l2 = game:GetService("TweenService"):Create(load2, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0.5, 0, 0, 11)})
+l2:Play()
+l2.Completed:Wait()
+local l3 = game:GetService("TweenService"):Create(load2, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0.7, 0, 0, 11)})
+l3:Play()
+l3.Completed:Wait()
+local l4 = game:GetService("TweenService"):Create(load2, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(1, 0, 0, 11)})
+l4:Play()
+l4.Completed:Wait()
+for i,v in pairs(Byefron:GetDescendants()) do
+	pcall(function()
+		if v:IsA("TextLabel") then
+		game:GetService("TweenService"):Create(v, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
+		end
+		game:GetService("TweenService"):Create(v, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
+		game:GetService("TweenService"):Create(v, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {ImageTransparency = 1}):Play()
+	end)
+end
+wait(1)
+Byefron:Destroy()
