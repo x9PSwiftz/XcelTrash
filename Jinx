@@ -912,7 +912,7 @@ end
 return tap
 end
 function create:Alert(titletext, desctext, btntext)
-    local NotificationHolderMain = Instance.new("TextButton")
+    local NotificationHolderMain = Instance.new("TextLabel")
     local Notification = Instance.new("Frame")
     local NotificationCorner = Instance.new("UICorner")
     local UnderBar = Instance.new("Frame")
@@ -930,7 +930,6 @@ function create:Alert(titletext, desctext, btntext)
     NotificationHolderMain.BorderSizePixel = 0
     NotificationHolderMain.Position = UDim2.new(0, 0, 0, 0)
     NotificationHolderMain.Size = UDim2.new(1,0 , 1,0)
-    NotificationHolderMain.AutoButtonColor = false
     NotificationHolderMain.Font = Enum.Font.SourceSans
     NotificationHolderMain.Text = ""
     NotificationHolderMain.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -938,7 +937,7 @@ function create:Alert(titletext, desctext, btntext)
     TweenService:Create(
        NotificationHolderMain,
        TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-       {BackgroundTransparency = 0.2}
+       {BackgroundTransparency = 0.5}
     ):Play()
 
 
@@ -1050,5 +1049,4 @@ function create:Alert(titletext, desctext, btntext)
        ):Play()
     end)
 end
-
 return create
