@@ -24,6 +24,18 @@ OpenClose.TextSize = 14.000
 OpenClose.TextWrapped = true
 OpenClose.Text = ""
 
+coroutine.wrap(
+	function()
+		while wait() do
+			Flux.RainbowColorValue = Flux.RainbowColorValue + 1 / 255
+			if Flux.RainbowColorValue >= 1 then
+				Flux.RainbowColorValue = 0
+			end
+            OpenClose.BackgroundColor3 = Color3.fromHSV(Flux.RainbowColorValue, 1, 1)
+		end
+	end
+)()
+
 function keydown(use)
     game:GetService("VirtualInputManager"):SendKeyEvent(true,use,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
     wait(.1)
