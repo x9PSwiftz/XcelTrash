@@ -24,14 +24,15 @@ OpenClose.TextSize = 14.000
 OpenClose.TextWrapped = true
 OpenClose.Text = ""
 
+RainbowColorValue = 0
 coroutine.wrap(
 	function()
 		while wait() do
-			Flux.RainbowColorValue = Flux.RainbowColorValue + 1 / 255
-			if Flux.RainbowColorValue >= 1 then
-				Flux.RainbowColorValue = 0
+			RainbowColorValue = RainbowColorValue + 1 / 255
+			if RainbowColorValue >= 1 then
+				RainbowColorValue = 0
 			end
-            OpenClose.BackgroundColor3 = Color3.fromHSV(Flux.RainbowColorValue, 1, 1)
+            OpenClose.BackgroundColor3 = Color3.fromHSV(RainbowColorValue, 1, 1)
 		end
 	end
 )()
