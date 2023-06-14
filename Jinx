@@ -1,4 +1,4 @@
--- WHAT
+-- PATATO
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 
@@ -195,11 +195,11 @@ game:GetService("UserInputService").InputBegan:Connect(function(input,chat)
     if input.KeyCode == Enum.KeyCode.Semicolon then 
         if ws == false then
             ws = true
-            gui.Enabled = true
+            gui.Enabled = false
             TweenService:Create(Main,TweenInfo.new(0.4,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Size = UDim2.new(0, 0, 0, 0)}):Play()
         else 
            ws = false 
-           gui.Enabled = false
+           gui.Enabled = true
            TweenService:Create(Main,TweenInfo.new(0.4,Enum.EasingStyle.Back),{Size = UDim2.new(0, 597, 0, 393)}):Play()
         end 
     end
