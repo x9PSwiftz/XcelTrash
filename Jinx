@@ -1,4 +1,4 @@
--- FREE FIRE VERSION
+-- SUPER SPIDER
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 
@@ -148,10 +148,51 @@ Title.TextXAlignment = Enum.TextXAlignment.Left
 
 dragify(Main)
 
+local InputService = game:GetService('UserInputService');
 ws = false
+
+local gui = Instance.new("ScreenGui")
+gui.Parent = game.CoreGui
+gui.IgnoreGuiInset = true
+gui.ResetOnSpawn = false
+
+local modalthing = Instance.new("TextButton")
+modalthing.Parent = gui
+modalthing.Size = UDim2.new(0, 0, 0, 0)
+modalthing.BackgroundTransparency = 1
+modalthing.Modal = true
+modalthing.Text = ""
+
+task.spawn(function()
+    local InputService = game:GetService('UserInputService');
+    local RunService = game:GetService('RunService')
+    while task.wait() do
+        if not Cursor then
+            Cursor = Drawing.new('Triangle');
+            Cursor.Thickness = 1;
+            Cursor.Filled = true;
+            Cursor.Visible = true;
+            CursorOutline = Drawing.new('Triangle');
+            CursorOutline.Thickness = 1;
+            CursorOutline.Filled = false;
+            CursorOutline.Color = Color3.new(0, 0, 0);
+            CursorOutline.Visible = true
+        end
+        InputService.MouseIconEnabled = false;
+        local mPos = InputService:GetMouseLocation();
+        Cursor.Color = Color3.fromRGB(0, 85, 255)
+        Cursor.PointA = Vector2.new(mPos.X, mPos.Y);
+        Cursor.PointB = Vector2.new(mPos.X + 16, mPos.Y + 6);
+        Cursor.PointC = Vector2.new(mPos.X + 6, mPos.Y + 16);
+        CursorOutline.PointA = Cursor.PointA;
+        CursorOutline.PointB = Cursor.PointB;
+        CursorOutline.PointC = Cursor.PointC;
+    end;
+end)
+
 game:GetService("UserInputService").InputBegan:Connect(function(input,chat)
     if chat then return end
-    if input.KeyCode == Enum.KeyCode.L then 
+    if input.KeyCode == Enum.KeyCode.Semicolon then 
         if ws == false then
             ws = true  
             TweenService:Create(Main,TweenInfo.new(0.4,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Size = UDim2.new(0, 0, 0, 0)}):Play()
@@ -1040,4 +1081,12 @@ function create:Alert(titletext, desctext, btntext)
        ):Play()
     end)
 end
+getgenv().Keydownxyz=Enum.KeyCode.L
+loadstring(game:HttpGet("https://raw.githubusercontent.com/x9PSwiftz/XcelTrash/main/OpenClouseUI"))()
+local x = create:Win("Jinx")
+tap = x:addtab("Main")
+tap2 = x:addtab("Settings")
+tap:Button("Notification",function()
+    create:Alert("Hey","click ok button","ok")
+end)
 return create
