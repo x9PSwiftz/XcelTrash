@@ -1081,12 +1081,4 @@ function create:Alert(titletext, desctext, btntext)
        ):Play()
     end)
 end
-getgenv().Keydownxyz=Enum.KeyCode.L
-loadstring(game:HttpGet("https://raw.githubusercontent.com/x9PSwiftz/XcelTrash/main/OpenClouseUI"))()
-local x = create:Win("Jinx")
-tap = x:addtab("Main")
-tap2 = x:addtab("Settings")
-tap:Button("Notification",function()
-    create:Alert("Hey","click ok button","ok")
-end)
 return create
