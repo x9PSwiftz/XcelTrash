@@ -1,4 +1,4 @@
--- PATATO
+--LASTEST
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 
@@ -163,7 +163,7 @@ modalthing.BackgroundTransparency = 1
 modalthing.Modal = true
 modalthing.Text = ""
 
-task.spawn(function()
+--[[task.spawn(function()
     local InputService = game:GetService('UserInputService');
     local RunService = game:GetService('RunService')
     while task.wait() do
@@ -188,7 +188,7 @@ task.spawn(function()
         CursorOutline.PointB = Cursor.PointB;
         CursorOutline.PointC = Cursor.PointC;
     end;
-end)
+end)]]
 
 game:GetService("UserInputService").InputBegan:Connect(function(input,chat)
     if chat then return end
