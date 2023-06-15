@@ -1,12 +1,7 @@
-
-
-
+--------------- UPDATE
 if game:GetService("CoreGui"):FindFirstChild("mk lib") then
 	game:GetService("CoreGui"):FindFirstChild("mk lib"):Destroy()
 end
-
-
-
 
 local SomeLib = {}
 local UserInputService = game:GetService("UserInputService")
@@ -107,7 +102,7 @@ Discord.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 function SomeLib:Window(text,mainclr,cls)
 	local PresetColor = mainclr or Color3.fromRGB(102, 152, 255) or _G.Color
-	local CloseBind = cls or Enum.KeyCode.RightControl or _G.Toggle
+	local CloseBind = cls or Enum.KeyCode.Semicolon or _G.Toggle
     local currentservertoggled = ""
 	local minimized = false
 	local fs = false
