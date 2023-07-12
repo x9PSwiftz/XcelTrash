@@ -1,4 +1,4 @@
--- EZ
+-- GG
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local tween = game:GetService("TweenService")
@@ -31,7 +31,7 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 getgenv().Settings = {
-	Key = Enum.KeyCode.RightControl
+	Key = Enum.KeyCode.Semicolon
 }
 local function MakeDraggable(topbarobject, object)
 	local Dragging = nil
@@ -411,7 +411,7 @@ function Library.xova()
 	Description.Position = UDim2.new(0.0882352963, 0, 0, 0)
 	Description.Size = UDim2.new(0, 483, 0, 67)
 	Description.Font = Enum.Font.GothamMedium
-	Description.Text = "Best Hub ever"
+	Description.Text = "Winnable Hub | " .. tostring(game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name)
 	Description.TextColor3 = Color3.fromRGB(255, 255, 255)
 	Description.TextSize = 12.000
 	Description.TextTransparency = 0.500
