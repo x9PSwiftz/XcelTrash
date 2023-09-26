@@ -1,4 +1,4 @@
----c
+--CD
 local winnableui = {}
 
 do  local ui =  game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("winnable")  if ui then ui:Destroy() end end
@@ -242,7 +242,7 @@ local function CircleAnim(GuiObject, EndColour, StartColour)
 end
 
 getgenv().Settings = {
-	Key = Enum.KeyCode.RightControl
+	Key = Enum.KeyCode.Insert
 }
 
 function winnableui:winnablestart(text,logo)
