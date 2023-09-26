@@ -1,3 +1,4 @@
+---c
 local winnableui = {}
 
 do  local ui =  game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("winnable")  if ui then ui:Destroy() end end
@@ -1310,6 +1311,7 @@ function winnableui:winnablestart(text,logo)
 				LabelMain.TextSize = 13.000
 				LabelMain.Text = tostring(text)
 				LabelMain.TextWrapped = true
+				LabelMain.TextXAlignment = Enum.TextXAlignment.Left
 
 				function  LabelRefresh:Change(text2)
 					LabelMain.Text = tostring(text2)
