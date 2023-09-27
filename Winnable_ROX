@@ -1,4 +1,3 @@
---CD
 local winnableui = {}
 
 do  local ui =  game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("winnable")  if ui then ui:Destroy() end end
@@ -15,7 +14,6 @@ local winnable = Instance.new("ScreenGui")
 winnable.Name = "winnable"
 winnable.Parent = game:GetService("CoreGui").RobloxGui.Modules
 winnable.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
 
 local function MakeDraggable(topbarobject, object)
 	local Dragging = nil
@@ -260,7 +258,7 @@ function winnableui:winnablestart(text,logo)
 	MainSceen.AnchorPoint = Vector2.new(0.5, 0.5)
 	MainSceen.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 	MainSceen.BorderColor3 = Color3.fromRGB(10, 10, 10)
-	MainSceen.Position = UDim2.new(0.483071834, 0, 0.437730134, 0)
+	MainSceen.Position = UDim2.new(0.5, 0, 0.5, 0)
 	MainSceen.Size = UDim2.new(0, 553, 0, 466)
 	MainSceen.ClipsDescendants = true
 
@@ -315,138 +313,140 @@ function winnableui:winnablestart(text,logo)
 	Notilistlayout.Padding = UDim.new(0, 5)
 
 	function winnableui:Notification(text,text2,delays,logo)
-		if logo == nil then
-			logo = "12390648924"
-		end
-		if delays == nil then
-			delays = 1
-		end
-		local TitleFrame = Instance.new("Frame")
+        spawn(function()
+        	if logo == nil then
+                logo = "12390648924"
+            end
+            if delays == nil then
+                delays = 1
+            end
+            local TitleFrame = Instance.new("Frame")
 
-		TitleFrame.Name = "TitleFrame"
-		TitleFrame.Parent = NotiFrame
-		TitleFrame.BackgroundColor3 = Color3.fromRGB(35,35,35)
-		TitleFrame.Size = UDim2.new(0, 0, 0, 0)
+            TitleFrame.Name = "TitleFrame"
+            TitleFrame.Parent = NotiFrame
+            TitleFrame.BackgroundColor3 = Color3.fromRGB(35,35,35)
+            TitleFrame.Size = UDim2.new(0, 0, 0, 0)
 
-		local Main_UiStroke = Instance.new("UIStroke")
+            local Main_UiStroke = Instance.new("UIStroke")
 
-		Main_UiStroke.Thickness = 1
-		Main_UiStroke.Name = ""
-		Main_UiStroke.Parent = TitleFrame
-		Main_UiStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-		Main_UiStroke.LineJoinMode = Enum.LineJoinMode.Round
-		Main_UiStroke.Color = Color3.fromRGB(191, 124, 0)
-		Main_UiStroke.Transparency = 0
+            Main_UiStroke.Thickness = 1
+            Main_UiStroke.Name = ""
+            Main_UiStroke.Parent = TitleFrame
+            Main_UiStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+            Main_UiStroke.LineJoinMode = Enum.LineJoinMode.Round
+            Main_UiStroke.Color = Color3.fromRGB(191, 124, 0)
+            Main_UiStroke.Transparency = 0
 
-		TitleFrame:TweenSizeAndPosition(UDim2.new(0, 250-10, 0, 70),  UDim2.new(0.5, 0, 0.5,0), "Out", "Back", 0.3, true)
+            TitleFrame:TweenSizeAndPosition(UDim2.new(0, 250-10, 0, 70),  UDim2.new(0.5, 0, 0.5,0), "Out", "Back", 0.3, true)
 
-		local ConnerTitile = Instance.new("UICorner")
+            local ConnerTitile = Instance.new("UICorner")
 
-		ConnerTitile.CornerRadius = UDim.new(0, 4)
-		ConnerTitile.Name = "ConnerTitile"
-		ConnerTitile.Parent = TitleFrame
+            ConnerTitile.CornerRadius = UDim.new(0, 4)
+            ConnerTitile.Name = "ConnerTitile"
+            ConnerTitile.Parent = TitleFrame
 
-		local imagenoti = Instance.new("ImageLabel")
+            local imagenoti = Instance.new("ImageLabel")
 
-		imagenoti.Name = "imagenoti"
-		imagenoti.Parent = TitleFrame
-		imagenoti.AnchorPoint = Vector2.new(0.5, 0.5)
-		imagenoti.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		imagenoti.Position = UDim2.new(0.135999978, 0, 0.5, 0)
-		imagenoti.Size = UDim2.new(0, 50, 0, 50)
-		imagenoti.BackgroundTransparency = 1
-		imagenoti.Image = "http://www.roblox.com/asset/?id="..tostring(logo)
+            imagenoti.Name = "imagenoti"
+            imagenoti.Parent = TitleFrame
+            imagenoti.AnchorPoint = Vector2.new(0.5, 0.5)
+            imagenoti.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            imagenoti.Position = UDim2.new(0.135999978, 0, 0.5, 0)
+            imagenoti.Size = UDim2.new(0, 50, 0, 50)
+            imagenoti.BackgroundTransparency = 1
+            imagenoti.Image = "http://www.roblox.com/asset/?id="..tostring(logo)
 
-		local txdlid = Instance.new("TextLabel")
-		local LableFrame = Instance.new("Frame")
+            local txdlid = Instance.new("TextLabel")
+            local LableFrame = Instance.new("Frame")
 
-		txdlid.Name = "txdlid"
-		txdlid.Parent = TitleFrame
-		txdlid.BackgroundColor3 = Color3.fromRGB(255,165,0)
-		txdlid.BackgroundTransparency = 1.000
-		txdlid.Position = UDim2.new(0.25, 0, 0.25, 0)
-		txdlid.Size = UDim2.new(0, 175, 0, 24)
-		txdlid.Font = Enum.Font.GothamSemibold
-		txdlid.TextColor3 = Color3.fromRGB(255,165,0)
-		txdlid.TextSize = 13.000
-		txdlid.Text = text
-		txdlid.TextXAlignment = Enum.TextXAlignment.Left
+            txdlid.Name = "txdlid"
+            txdlid.Parent = TitleFrame
+            txdlid.BackgroundColor3 = Color3.fromRGB(255,165,0)
+            txdlid.BackgroundTransparency = 1.000
+            txdlid.Position = UDim2.new(0.25, 0, 0.25, 0)
+            txdlid.Size = UDim2.new(0, 175, 0, 24)
+            txdlid.Font = Enum.Font.GothamSemibold
+            txdlid.TextColor3 = Color3.fromRGB(255,165,0)
+            txdlid.TextSize = 13.000
+            txdlid.Text = text
+            txdlid.TextXAlignment = Enum.TextXAlignment.Left
 
-		LableFrame.Name = "LableFrame"
-		LableFrame.Parent = TitleFrame
-		LableFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-		LableFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		LableFrame.BackgroundTransparency = 1.000
-		LableFrame.Position = UDim2.new(0.625999987, 0, 0.620000005, 0)
-		LableFrame.Size = UDim2.new(0, 175, 0, 25)
+            LableFrame.Name = "LableFrame"
+            LableFrame.Parent = TitleFrame
+            LableFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+            LableFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            LableFrame.BackgroundTransparency = 1.000
+            LableFrame.Position = UDim2.new(0.625999987, 0, 0.620000005, 0)
+            LableFrame.Size = UDim2.new(0, 175, 0, 25)
 
-		local TextNoti = Instance.new("TextLabel")
+            local TextNoti = Instance.new("TextLabel")
 
-		TextNoti.Name = "TextNoti"
-		TextNoti.Parent = LableFrame
-		TextNoti.Active = true
-		TextNoti.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		TextNoti.BackgroundTransparency = 1.000
-		TextNoti.Size = UDim2.new(0, 175, 0, 25)
-		TextNoti.Font = Enum.Font.Gotham
-		TextNoti.Text = text2
-		TextNoti.TextColor3 = Color3.fromRGB(255, 255, 255)
-		TextNoti.TextSize = 12.000
-		TextNoti.TextXAlignment = Enum.TextXAlignment.Left
+            TextNoti.Name = "TextNoti"
+            TextNoti.Parent = LableFrame
+            TextNoti.Active = true
+            TextNoti.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            TextNoti.BackgroundTransparency = 1.000
+            TextNoti.Size = UDim2.new(0, 175, 0, 25)
+            TextNoti.Font = Enum.Font.Gotham
+            TextNoti.Text = text2
+            TextNoti.TextColor3 = Color3.fromRGB(255, 255, 255)
+            TextNoti.TextSize = 12.000
+            TextNoti.TextXAlignment = Enum.TextXAlignment.Left
 
-		repeat wait() until TitleFrame.Size == UDim2.new(0, 250-10, 0, 70)
+            repeat wait() until TitleFrame.Size == UDim2.new(0, 250-10, 0, 70)
 
-		local Time = Instance.new("Frame")
-		local UICorner = Instance.new("UICorner")
-		local UIPadding = Instance.new("UIPadding")
+            local Time = Instance.new("Frame")
+            local UICorner = Instance.new("UICorner")
+            local UIPadding = Instance.new("UIPadding")
 
-		Time.Name = "Time"
-		Time.Parent = TitleFrame
-		Time.Active = true
-		Time.BackgroundColor3 = Color3.fromRGB(255,165,0)
-		Time.BorderSizePixel = 0
-		Time.Position = UDim2.new(0.0320000015, 0, 0.870000005, 0)
-		Time.Size = UDim2.new(0, 236, 0, 3)
+            Time.Name = "Time"
+            Time.Parent = TitleFrame
+            Time.Active = true
+            Time.BackgroundColor3 = Color3.fromRGB(255,165,0)
+            Time.BorderSizePixel = 0
+            Time.Position = UDim2.new(0.0320000015, 0, 0.870000005, 0)
+            Time.Size = UDim2.new(0, 236, 0, 3)
 
-		UICorner.Parent = Time
-		UICorner.CornerRadius = UDim.new(0, 4)
-		UICorner.Name = ""
+            UICorner.Parent = Time
+            UICorner.CornerRadius = UDim.new(0, 4)
+            UICorner.Name = ""
 
-		UIPadding.Parent = NotiFrame
-		UIPadding.PaddingLeft = UDim.new(0, 15)
-		UIPadding.PaddingTop = UDim.new(0, 15)
+            UIPadding.Parent = NotiFrame
+            UIPadding.PaddingLeft = UDim.new(0, 15)
+            UIPadding.PaddingTop = UDim.new(0, 15)
 
-		TweenService:Create(
-			Time,
-			TweenInfo.new(tonumber(delays), Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),
-			{Size = UDim2.new(0, 0, 0, 3)} -- UDim2.new(0, 128, 0, 25)
-		):Play()
-		delay(tonumber(delays),function()
-			TweenService:Create(
-				imagenoti,
-				TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
-				{ImageTransparency = 1} -- UDim2.new(0, 128, 0, 25)
-			):Play()
-			TweenService:Create(
-				TextNoti,
-				TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
-				{TextTransparency = 1} -- UDim2.new(0, 128, 0, 25)
-			):Play()
-			TweenService:Create(
-				txdlid,
-				TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
-				{TextTransparency = 1} -- UDim2.new(0, 128, 0, 25)
-			):Play()
-			wait(0.3)
-			TweenService:Create(
-				TitleFrame,
-				TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut),
-				{Size = UDim2.new(0, 0, 0, 70)} -- UDim2.new(0, 128, 0, 25)
-			):Play()
-			wait(0.3)
-			TitleFrame:Destroy()
-		end
-		)
+            TweenService:Create(
+                Time,
+                TweenInfo.new(tonumber(delays), Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),
+                {Size = UDim2.new(0, 0, 0, 3)} -- UDim2.new(0, 128, 0, 25)
+            ):Play()
+            delay(tonumber(delays),function()
+                TweenService:Create(
+                    imagenoti,
+                    TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+                    {ImageTransparency = 1} -- UDim2.new(0, 128, 0, 25)
+                ):Play()
+                TweenService:Create(
+                    TextNoti,
+                    TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+                    {TextTransparency = 1} -- UDim2.new(0, 128, 0, 25)
+                ):Play()
+                TweenService:Create(
+                    txdlid,
+                    TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+                    {TextTransparency = 1} -- UDim2.new(0, 128, 0, 25)
+                ):Play()
+                wait(0.3)
+                TweenService:Create(
+                    TitleFrame,
+                    TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut),
+                    {Size = UDim2.new(0, 0, 0, 70)} -- UDim2.new(0, 128, 0, 25)
+                ):Play()
+                wait(0.3)
+                TitleFrame:Destroy()
+            end
+            )
+        end)
 	end
 
 	local KeyButton = Instance.new("TextButton")
@@ -870,11 +870,11 @@ function winnableui:winnablestart(text,logo)
 			ScrollingFrame_PageframeUIListLayout.Name = "ScrollingFrame_PageframeUIListLayout"
 			ScrollingFrame_PageframeUIListLayout.Parent = ScrollingFrame_Pageframe
 			ScrollingFrame_PageframeUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+            ScrollingFrame_PageframeUIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 			ScrollingFrame_PageframeUIListLayout.Padding = UDim.new(0, 5)
 
 			ScrollingFrame_PageframeUIPadding.Name = "ScrollingFrame_PageframeUIPadding"
 			ScrollingFrame_PageframeUIPadding.Parent = ScrollingFrame_Pageframe
-			ScrollingFrame_PageframeUIPadding.PaddingLeft = UDim.new(0, 10)
 			ScrollingFrame_PageframeUIPadding.PaddingTop = UDim.new(0, 10)
 
 			local TextPage = Instance.new("TextLabel")
@@ -930,8 +930,8 @@ function winnableui:winnablestart(text,logo)
 				ButtonFrame.Name = "ButtonFrame"
 				ButtonFrame.Parent = ScrollingFrame_Pageframe
 				ButtonFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				ButtonFrame.BackgroundTransparency = 1.000
-				ButtonFrame.Size = UDim2.new(0, 407, 0, 38)
+				ButtonFrame.BackgroundTransparency = 1
+				ButtonFrame.Size = UDim2.new(0.95, 0, 0, 27)
 
 				ButtonMain.Name = "ButtonMain"
 				ButtonMain.Parent = ButtonFrame
@@ -939,7 +939,7 @@ function winnableui:winnablestart(text,logo)
 				ButtonMain.BorderSizePixel = 0
 				ButtonMain.AnchorPoint = Vector2.new(0.5, 0.5)
 				ButtonMain.Position = UDim2.new(0.5, 0, 0.5, 0)
-				ButtonMain.Size = UDim2.new(0, 397, 0, 27)
+				ButtonMain.Size = UDim2.new(1, 0, 0, 27)
 				ButtonMain.AutoButtonColor = false
 				ButtonMain.Font = Enum.Font.GothamSemibold
 				ButtonMain.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -991,13 +991,13 @@ function winnableui:winnablestart(text,logo)
 					TweenService:Create(
 						ButtonMain,
 						TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out),
-						{Size = UDim2.new(0, 385, 0, 27)}
+						{Size = UDim2.new(0, 370, 0, 27)}
 					):Play()
 					wait(0.1)
 					TweenService:Create(
 						ButtonMain,
 						TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out),
-						{Size = UDim2.new(0, 397, 0, 27)}
+						{Size = UDim2.new(1, 0, 0, 27)}
 					):Play()
 					ButtonMain.TextSize = 0
 
@@ -1020,18 +1020,17 @@ function winnableui:winnablestart(text,logo)
 				local Corner2 = Instance.new("TextButton")
 				local Corner2UICorner = Instance.new("UICorner")
 
-				ToggleFrame.Name = "ToggleFrame"
+                ToggleFrame.Name = "ToggleFrame"
 				ToggleFrame.Parent = ScrollingFrame_Pageframe
 				ToggleFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 				ToggleFrame.BackgroundTransparency = 1.000
-				ToggleFrame.Size = UDim2.new(0, 407, 0, 41)
+				ToggleFrame.Size = UDim2.new(1, 0, 0, 40)
 
 				ToggleMain.Name = "ToggleMain"
 				ToggleMain.Parent = ToggleFrame
 				ToggleMain.BackgroundColor3 = Color3.fromRGB(211, 137, 0)
 				ToggleMain.BackgroundTransparency = 1.000
 				ToggleMain.BorderSizePixel = 0
-				ToggleMain.Size = UDim2.new(0, 397, 0, 41)
 				ToggleMain.AutoButtonColor = false
 				ToggleMain.Font = Enum.Font.GothamSemibold
 				ToggleMain.Text = ""
@@ -1039,6 +1038,7 @@ function winnableui:winnablestart(text,logo)
 				ToggleMain.TextSize = 11.000
 				ToggleMain.AnchorPoint = Vector2.new(0.5, 0.5)
 				ToggleMain.Position = UDim2.new(0.5, 0, 0.5, 0)
+				ToggleMain.Size = UDim2.new(0.95, 0, 1, 0)
 
 				local ToggleMainStroke = Instance.new("UIStroke")
 
@@ -1056,10 +1056,9 @@ function winnableui:winnablestart(text,logo)
 
 				TextToggle.Name = "TextToggle"
 				TextToggle.Parent = ToggleFrame
-				TextToggle.AnchorPoint = Vector2.new(0.5, 0.5)
 				TextToggle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 				TextToggle.BackgroundTransparency = 1.000
-				TextToggle.Position = UDim2.new(0.4, 0, 0.5, 0)
+				TextToggle.Position = UDim2.new(0.05, 0, 0, 0)
 				TextToggle.Size = UDim2.new(0, 291, 0, 41)
 				TextToggle.Font = Enum.Font.GothamSemibold
 				TextToggle.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -1298,14 +1297,16 @@ function winnableui:winnablestart(text,logo)
 				LabelFrame.Name = "LabelFrame"
 				LabelFrame.Parent = ScrollingFrame_Pageframe
 				LabelFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				LabelFrame.BackgroundTransparency = 1.000
-				LabelFrame.Size = UDim2.new(0, 397, 0, 41)
+				LabelFrame.BackgroundTransparency = 1
+				LabelFrame.Size = UDim2.new(1, 0, 0, 30)
 
 				LabelMain.Name = "LabelMain"
 				LabelMain.Parent = LabelFrame
 				LabelMain.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 				LabelMain.BackgroundTransparency = 1.000
-				LabelMain.Size = UDim2.new(0, 397, 0, 41)
+                LabelMain.AnchorPoint = Vector2.new(0.5, 0.5)
+				LabelMain.Position = UDim2.new(0.5, 0, 0.5, 0)
+				LabelMain.Size = UDim2.new(0.95, 0, 1, 0)
 				LabelMain.Font = Enum.Font.GothamSemibold
 				LabelMain.TextColor3 = Color3.fromRGB(255,165,0)
 				LabelMain.TextSize = 13.000
@@ -1325,21 +1326,20 @@ function winnableui:winnablestart(text,logo)
 				TextFrame.Name = "TextFrame"
 				TextFrame.Parent = ScrollingFrame_Pageframe
 				TextFrame.Active = true
-				TextFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 				TextFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				TextFrame.BackgroundTransparency = 1.000
-				TextFrame.Position = UDim2.new(0.55, 0, 0.5, 0)
-				TextFrame.Size = UDim2.new(0, 401, 0, 41)
+				TextFrame.BackgroundTransparency = 1
+				TextFrame.Size = UDim2.new(0.95, 0, 0, 50)
 
 				local LabelNameSliderxd = Instance.new("TextLabel")
 
 				LabelNameSliderxd.Name = "LabelNameSliderxd"
 				LabelNameSliderxd.Parent = TextFrame
 				LabelNameSliderxd.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-				LabelNameSliderxd.Position = UDim2.new(0.025, 0, -0.2, 0)
 				LabelNameSliderxd.BackgroundTransparency = 1
 				LabelNameSliderxd.BorderSizePixel = 0
-				LabelNameSliderxd.Size = UDim2.new(0, 397, 0, 25)
+                LabelNameSliderxd.AnchorPoint = Vector2.new(0.5, 0.5)
+				LabelNameSliderxd.Position = UDim2.new(0.5, 0, 0.1, 0)
+				LabelNameSliderxd.Size = UDim2.new(1, 0, 0, 25)
 				LabelNameSliderxd.Font = Enum.Font.GothamSemibold
 				LabelNameSliderxd.TextColor3 = Color3.fromRGB(136,136,138)
 				LabelNameSliderxd.TextSize = 12.000
@@ -1357,13 +1357,13 @@ function winnableui:winnablestart(text,logo)
 
 				FrameBox.Name = "FrameBox"
 				FrameBox.Parent = TextFrame
-				FrameBox.AnchorPoint = Vector2.new(0.5, 0.5)
 				FrameBox.BackgroundColor3 = Color3.fromRGB(20,20,20)
 				FrameBox.BackgroundTransparency = 1
 				FrameBox.BorderSizePixel = 1
 				FrameBox.ClipsDescendants = true
-				FrameBox.Position = UDim2.new(0.5, 0, 0.8, 0)
-				FrameBox.Size = UDim2.new(0, 397, 0, 25)
+                FrameBox.AnchorPoint = Vector2.new(0.5, 0.5)
+				FrameBox.Position = UDim2.new(0.5, 0, 0.6, 0)
+				FrameBox.Size = UDim2.new(1, 0, 0, 25)
 
 				local FrameBoxStroke = Instance.new("UIStroke")
 
@@ -1448,26 +1448,16 @@ function winnableui:winnablestart(text,logo)
 
 				local defaultt = default or ""
 
-				local FrameButton = Instance.new("Frame")
-
 				--Properties:
-
-				FrameButton.Name = "FrameButton"
-				FrameButton.Parent = ScrollingFrame_Pageframe
-				FrameButton.AnchorPoint = Vector2.new(0.5, 0.5)
-				FrameButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				FrameButton.BackgroundTransparency = 1.000
-				FrameButton.Position = UDim2.new(10, 0, 0.347239256, 0)
-				FrameButton.Size = UDim2.new(0, 401, 0, 5)
 
 				local DropFrame = Instance.new("Frame")
 				DropFrame.Name = "DropFrame"
 				DropFrame.Parent = ScrollingFrame_Pageframe
-				DropFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				DropFrame.BackgroundColor3 = Color3.fromRGB(225, 225, 225)
 				DropFrame.BackgroundTransparency = 1
-				DropFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+                DropFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 				DropFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-				DropFrame.Size = UDim2.new(0, 401, 0, 25)
+				DropFrame.Size = UDim2.new(0.95, 0, 0, 25)
 				DropFrame.ClipsDescendants = true
 
 				local FrameBoxStroke = Instance.new("UIStroke")
@@ -1516,7 +1506,7 @@ function winnableui:winnablestart(text,logo)
 				DropArbt_listimage.Parent = LabelFrameDrop
 				DropArbt_listimage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 				DropArbt_listimage.BackgroundTransparency = 1.000
-				DropArbt_listimage.Position = UDim2.new(0.934673369, 0, 0.099999994, 0)
+				DropArbt_listimage.Position = UDim2.new(0.9, 0, 0.099999994, 0)
 				DropArbt_listimage.Rotation = 90.000
 				DropArbt_listimage.Size = UDim2.new(0, 20, 0, 20)
 				DropArbt_listimage.Image = "rbxassetid://3926305904"
@@ -1627,7 +1617,7 @@ function winnableui:winnablestart(text,logo)
 						TweenService:Create(
 							DropFrame,
 							TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-							{Size = UDim2.new(0, 401, 0, 25)} -- UDim2.new(0, 128, 0, 25)
+							{Size = UDim2.new(0.95,0, 0, 25)} -- UDim2.new(0, 128, 0, 25)
 						):Play()
 						TweenService:Create(
 							DropArbt_listimage,
@@ -1666,7 +1656,7 @@ function winnableui:winnablestart(text,logo)
 						TweenService:Create(
 							DropFrame,
 							TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-							{Size = UDim2.new(0, 401, 0, FrameSize)} -- UDim2.new(0, 128, 0, 25)
+							{Size = UDim2.new(0.95,0, 0, FrameSize)} -- UDim2.new(0, 128, 0, 25)
 						):Play()
 						TweenService:Create(
 							DropArbt_listimage,
@@ -1678,7 +1668,7 @@ function winnableui:winnablestart(text,logo)
 						TweenService:Create(
 							DropFrame,
 							TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-							{Size = UDim2.new(0, 401, 0, 25)} -- UDim2.new(0, 128, 0, 25)
+							{Size = UDim2.new(0.95,0, 0, 25)} -- UDim2.new(0, 128, 0, 25)
 						):Play()
 						TweenService:Create(
 							DropArbt_listimage,
@@ -1697,7 +1687,7 @@ function winnableui:winnablestart(text,logo)
 					TweenService:Create(
 						DropFrame,
 						TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{Size = UDim2.new(0, 401, 0, 25)} -- UDim2.new(0, 128, 0, 25)
+						{Size = UDim2.new(0.95,0, 0, 25)} -- UDim2.new(0, 128, 0, 25)
 					):Play()
 					dog = not dog
 					for i, v in next, ScolDown:GetChildren() do
@@ -1755,16 +1745,31 @@ function winnableui:winnablestart(text,logo)
 					Line.Size = UDim2.new(0, 401, 0, 1)
 
 					ButtonDrop2.MouseButton1Click:Connect(function()
-						TweenService:Create(
-							DropFrame,
-							TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-							{Size = UDim2.new(0, 401, 0, 25)} -- UDim2.new(0, 128, 0, 25)
-						):Play()
-						TweenService:Create(
-							DropArbt_listimage,
-							TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.Out),
-							{Rotation = 90}
-						):Play()
+						if dog == false then
+							TweenService:Create(
+								DropFrame,
+								TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+								{Size = UDim2.new(0.95,0, 0, FrameSize)} -- UDim2.new(0, 128, 0, 25)
+							):Play()
+							TweenService:Create(
+								DropArbt_listimage,
+								TweenInfo.new(0.4, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out),
+								{Rotation = 270}
+							):Play()
+							ScolDown.CanvasSize = UDim2.new(0,0,0,UIListLayoutlist.AbsoluteContentSize.Y + 10  )
+						else
+							TweenService:Create(
+								DropFrame,
+								TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+								{Size = UDim2.new(0.95,0, 0, 25)} -- UDim2.new(0, 128, 0, 25)
+							):Play()
+							TweenService:Create(
+								DropArbt_listimage,
+								TweenInfo.new(0.4, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out),
+								{Rotation = 90}
+							):Play()
+							ScolDown.CanvasSize = UDim2.new(0,0,0,UIListLayoutlist.AbsoluteContentSize.Y + 10  )
+						end
 						LabelFrameDrop.Text =  text.." : "..tostring(t)
 						callback(t)
 						dog = not dog
@@ -1786,7 +1791,7 @@ function winnableui:winnablestart(text,logo)
 				SliderFrame.BackgroundTransparency = 1
 				SliderFrame.ClipsDescendants = true
 				SliderFrame.Position = UDim2.new(0.5, 0, 0.457317084, 0)
-				SliderFrame.Size = UDim2.new(0, 401, 0, 47)
+				SliderFrame.Size = UDim2.new(0.95, 0, 0, 47)
 
 				local Main_UiStroke2 = Instance.new("UIStroke")
 
@@ -1933,7 +1938,7 @@ function winnableui:winnablestart(text,logo)
 				ValueFrame.BackgroundColor3 = Color3.fromRGB(25,25,25)
 				ValueFrame.BorderSizePixel = 0
 				ValueFrame.Position = UDim2.new(0.499824077, 0, 0.800000012, 0)
-				ValueFrame.Size = UDim2.new(0, 395, 0, 5)
+				ValueFrame.Size = UDim2.new(0, 370, 0, 5)
 
 				local Main_UiStroke = Instance.new("UIStroke")
 
@@ -1959,7 +1964,7 @@ function winnableui:winnablestart(text,logo)
 				PartValue.BackgroundColor3 = Color3.fromRGB(10,10,10)
 				PartValue.BackgroundTransparency = 1.000
 				PartValue.Position = UDim2.new(0.498982757, 0, 0.300000012, 0)
-				PartValue.Size = UDim2.new(0, 395, 0, 5)
+				PartValue.Size = UDim2.new(0, 370, 0, 5)
 
 				local MainValue = Instance.new("Frame")
 
@@ -2190,7 +2195,6 @@ function winnableui:winnablestart(text,logo)
 					location[flag] = default
 				end
 
-
 				local DropFrame = Instance.new("Frame")
 
 				DropFrame.Name = "DropFrame"
@@ -2199,7 +2203,7 @@ function winnableui:winnablestart(text,logo)
 				DropFrame.BorderSizePixel = 0
 				DropFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 				DropFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-				DropFrame.Size = UDim2.new(0, 401, 0, 30) -- UDim2.new(0, 213, 0, 35)
+				DropFrame.Size = UDim2.new(0.95,0, 0, 30) -- UDim2.new(0, 213, 0, 35)
 				DropFrame.BackgroundTransparency  = 1
 				DropFrame.ClipsDescendants = true
 
@@ -2520,7 +2524,7 @@ function winnableui:winnablestart(text,logo)
 						TweenService:Create(
 							DropFrame,
 							TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-							{Size = UDim2.new(0, 401, 0, FrameSize)} -- UDim2.new(0, 128, 0, 25)
+							{Size = UDim2.new(0.95,0, 0, FrameSize)} -- UDim2.new(0, 128, 0, 25)
 						):Play()
 						TweenService:Create(
 							DropArbt_listimage,
@@ -2532,7 +2536,7 @@ function winnableui:winnablestart(text,logo)
 						TweenService:Create(
 							DropFrame,
 							TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-							{Size = UDim2.new(0, 401, 0, 30)} -- UDim2.new(0, 128, 0, 25)
+							{Size = UDim2.new(0.95,0, 0, 30)} -- UDim2.new(0, 128, 0, 25)
 						):Play()
 						TweenService:Create(
 							DropArbt_listimage,
